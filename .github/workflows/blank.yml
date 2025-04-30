@@ -1,10 +1,12 @@
 name: E2E on Chrome
-
 on:
   workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to test'
+        required: false
   pull_request:
     types: [opened, reopened, edited, synchronize]
-
 jobs:
   Cypress-Run:
     runs-on: ubuntu-latest
@@ -17,3 +19,4 @@ jobs:
         uses: cypress-io/github-action@v6.6.1
         with:
           browser: chrome
+          working-directory:
